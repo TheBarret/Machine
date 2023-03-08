@@ -1,4 +1,6 @@
-﻿Public Class Instruction
+Imports System.Runtime.InteropServices
+
+Public Class Instruction
 
     Public Property Parameter As UInt16
     Public Property Instruction As Byte
@@ -16,7 +18,7 @@
 
     Public ReadOnly Property Length As UInt16
         Get
-            Return 4
+            Return Marshal.SizeOf(Me.Instruction) + Marshal.SizeOf(Me.Parameter)
         End Get
     End Property
 End Class
