@@ -73,6 +73,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\Assembler.vb" />
     <Compile Include="Editor.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -80,9 +81,9 @@
       <DependentUpon>Editor.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Instruction.vb" />
-    <Compile Include="Kernel.vb" />
-    <Compile Include="Memory.vb" />
+    <Compile Include="Components\Instruction.vb" />
+    <Compile Include="Components\Processor.vb" />
+    <Compile Include="Components\Memory.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -98,6 +99,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Parser\Definitions.vb" />
+    <Compile Include="Parser\Lexer.vb" />
+    <Compile Include="Parser\Rule.vb" />
+    <Compile Include="Parser\Syntax.vb" />
+    <Compile Include="Parser\Token.vb" />
+    <Compile Include="Types.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Editor.resx">

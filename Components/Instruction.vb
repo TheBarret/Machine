@@ -1,27 +1,16 @@
 ﻿Public Class Instruction
-    Private Property Left As Byte()
-    Private Property Right As Byte()
 
-    Sub New(left As UInt16, right As UInt16)
-        Me.Left = BitConverter.GetBytes(left)
-        Me.Right = BitConverter.GetBytes(right)
+    Public Property Parameter As UInt16
+    Public Property Instruction As Byte
+
+    Sub New(instruction As Byte, param As UInt16)
+        Me.Instruction = instruction
+        Me.Parameter = param
     End Sub
 
-    Public ReadOnly Property Opcode() As Byte
+    Public ReadOnly Property Opcode() As Types
         Get
-            Return Me.Left(0)
-        End Get
-    End Property
-
-    Public ReadOnly Property Selection() As Byte
-        Get
-            Return Me.Left(1)
-        End Get
-    End Property
-
-    Public ReadOnly Property Parameter() As UInt16
-        Get
-            Return BitConverter.ToUInt16(Me.Right, 0)
+            Return CType(Me.Instruction, Types)
         End Get
     End Property
 
