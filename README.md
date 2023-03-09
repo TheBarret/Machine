@@ -27,7 +27,7 @@ nop  			: No operation
 load 			: Loads a variable on the stack
 push 			: Loads a number on the stack
 call 			: Sets pc to address and pushes current address to address stack
-return  		: Returns to call address by popping an address stack value
+return  		: Pops address from address stack and jumps to address
 end  			: Stops the current operation and exits program
 rst  			: Resets the stack
 rsta  			: Resets the address stack
