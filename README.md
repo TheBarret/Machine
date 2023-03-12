@@ -7,22 +7,21 @@ A very basic 16bit Virtual Machine with a very limited instruction set (WORK IN 
 <pre>
 Project		: VM16
 Description	: 16Bit Virtual Machine
-Language	: VB.Net (Framework 4.7.2)
-Data types	: String, UInt16, Byte
+
 Data Operations:
-T_PUSH				 : Pushes a value onto the stack
-T_LOAD				 : Loads a value from the specified memory address onto the stack
-T_STORE				 : Stores a value from the stack into the specified memory address
-T_SLEN				 : Pushes the length of the stack onto the stack
-T_ALEN				 : Pushes the length of the address stack onto the stack
+T_PUSH	 : Pushes a value onto the stack
+T_LOAD	 : Loads a value from the specified memory address onto the stack
+T_STORE	 : Stores a value from the stack into the specified memory address
+T_SLEN	 : Pushes the length of the stack onto the stack
+T_ALEN	 : Pushes the length of the address stack onto the stack
 
 Arithmetic Operations:
 
-T_ADDITION			 : Adds two values from the stack and pushes the result onto the stack
-T_SUBTRACTION		 : Subtracts two values from the stack and pushes the result onto the stack
-T_DIVISION_INT		 : Divides two values from the stack and pushes the integer result onto the stack
-T_MULTIPLICATION	 : Multiplies two values from the stack and pushes the result onto the stack
-T_MODULO_INT		 : Calculates the integer modulo of two values from the stack and pushes the result onto the stack
+T_ADDITION		 : Adds two values from the stack and pushes the result onto the stack
+T_SUBTRACTION	 : Subtracts two values from the stack and pushes the result onto the stack
+T_DIVISION_INT	 : Divides two values from the stack and pushes the integer result onto the stack
+T_MULTIPLICATION : Multiplies two values from the stack and pushes the result onto the stack
+T_MODULO_INT	 : Calculates the integer modulo of two values from the stack and pushes the result onto the stack
 
 Bitwise Operations:
 
