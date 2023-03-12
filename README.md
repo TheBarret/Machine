@@ -9,50 +9,41 @@ Project		: VM16
 Description	: 16Bit Virtual Machine
 Language	: VB.Net (Framework 4.7.2)
 Data types	: String, UInt16, Byte
+Data Operations:
+T_PUSH				 : Pushes a value onto the stack
+T_LOAD				 : Loads a value from the specified memory address onto the stack
+T_STORE				 : Stores a value from the stack into the specified memory address
+T_SLEN				 : Pushes the length of the stack onto the stack
+T_ALEN				 : Pushes the length of the address stack onto the stack
 
--------------------------------------------------------------------------------------------------------------------
-Memory Mapping
+Arithmetic Operations:
 
-Free space				:   0x0000 ~ 0xF7FF = 63487 bytes
-Stack (Address)			        : 	0xF7FF ~ 0xFBFF = 1024 bytes
-Stack					:	0xFBFF ~ 0xffff = 1024 bytes
+T_ADDITION			 : Adds two values from the stack and pushes the result onto the stack
+T_SUBTRACTION		 : Subtracts two values from the stack and pushes the result onto the stack
+T_DIVISION_INT		 : Divides two values from the stack and pushes the integer result onto the stack
+T_MULTIPLICATION	 : Multiplies two values from the stack and pushes the result onto the stack
+T_MODULO_INT		 : Calculates the integer modulo of two values from the stack and pushes the result onto the stack
 
--------------------------------------------------------------------------------------------------------------------
-Instructions
+Bitwise Operations:
 
-instr.   parameter        description
--------|----------------|------------------------------------------------------------------------------------------
-<pre>
-nop				: No operation
-load 	[variable]		: Loads a variable on the stack
-push 	[value]			: Loads a number on the stack
-call 	[address]		: Sets pc to address and pushes current address to address stack
-return				: Pops address from address stack and jumps to address
-end				: Stops the current operation and exits program
-rst				: Resets the stack
-rsta				: Resets the address stack
-slen				: Pushes the count of stack values, on the stack
-random				: Takes two values of the stack and returns a random generated value on the stack
-print 	[value]			: prints a single number value to the stdout
-printl 	[address]		: prints a string at address to the stdout
-read 	[address]		: reads a single value from the stdin and stores it in address
-readl 	[address]		: reads a line from the stdin and stores it in address
-goto 	[address]		: Jumps to address without condition, does not push jump address
-ife  	[address]		: Takes two values of stack, if `a == b` jumps to address (stores return address)
-ifne	[address]		: Takes two values of stack, if `a != b` jumps to address (stores return address)
-ifg  	[address]		: Takes two values of stack, if `a > b` jump to address (stores return address)
-ifl  	[address]		: Takes two values of stack, if `a < b` jumps to address (stores return address)
-else 	[address]		: Used in tandem with `ife, ifne, ifg or ifl` (stores return address)
-add				: Takes two values of stack and returns the sum of `a + b` on the stack
-sub				: Takes two values of stack and returns the sum of `a - b` on the stack
-div				: Takes two values of stack and returns the sum of `a / b` on the stack
-mul				: Takes two values of stack and returns the sum of `a * b` on the stack
-mod				: Takes two values of stack and returns the sum of `a mod b` on the stack
-and				: Takes two values of stack and returns the bitwise operation of `a and b`
-or				: Takes two values of stack and returns the bitwise operation of `a or b`
-xor				: Takes two values of stack and returns the bitwise operation of `a xor b`
-shr				: Takes two values of stack and returns the bitwise operation of `a >> b`
-shl				: Takes two values of stack and returns the bitwise operation of `a << b`
-shlc				: Takes two values of stack and returns the bitwise operation of `a <<< b` or `carry`
-shrc				: Takes two values of stack and returns the bitwise operation of `a >>> b` or `carry`
+T_BITWISE_AND		 : Applies the bitwise AND operation on two values from the stack and pushes the result onto the stack
+T_BITWISE_OR		 : Applies the bitwise OR operation on two values from the stack and pushes the result onto the stack
+T_BITWISE_XOR		 : Applies the bitwise XOR operation on two values from the stack and pushes the result onto the stack
+T_BITWISE_SHIFT_RIGHT: Applies the bitwise shift right operation on two values from the stack and pushes the result onto the stack
+T_BITWISE_SHIFT_LEFT : Applies the bitwise shift left operation on two values from the stack and pushes the result onto the stack
+
+Control Flow Operations:
+
+T_IF_EQUAL_JUMP		 : Pops two values from the stack and jumps to the specified label if they are equal
+T_IF_NOT_EQUAL_JUMP	 : Pops two values from the stack and jumps to the specified label if they are not equal
+T_IF_GREATER_JUMP	 : Pops two values from the stack and jumps to the specified label if the first value is greater than the second
+T_IF_LESSER_JUMP	 : Pops two values from the stack and jumps to the specified label if the first value is lesser than the second
+T_ELSE				 : Provides supplementary Else for the If opcodes
+T_GOTO				 : Jumps to the specified label unconditionally
+T_CALL				 : Calls a subroutine with a specified label and pushes the current address onto the address stack
+T_RETURN			 : Returns from a subroutine and pops the previous address from the address stack
+
+IO Operations:
+T_PRINT				 : Prints a value variable address to stdout
+T_RANDOM			 : Pops two values from the stack and pushes a random generated number of these values
 </pre>
